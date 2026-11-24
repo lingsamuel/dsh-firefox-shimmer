@@ -1,6 +1,6 @@
 {
   "name": "dsh-firefox-shimmer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "修复 DeepSeek Harness Web 在 Firefox 中的文字扫光重影",
   "type": "module",
   "engines": {
