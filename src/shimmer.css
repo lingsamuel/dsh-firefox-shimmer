@@ -1,0 +1,24 @@
+@media (prefers-reduced-motion: no-preference) {
+  /* 用 TextShimmer 的装饰层宽度计算位移，覆盖单段和组合文案。 */
+  [data-shimmer="true"] > span[aria-hidden="true"][inert] {
+    container-type: inline-size;
+  }
+
+  /* Firefox 中两层反向位移可能错帧。保留原渐变和时间参数，只移动遮罩。 */
+  [data-shimmer="true"] > span[aria-hidden="true"][inert] > span {
+    transform: none;
+    mask-position: -100cqw 0;
+    mask-repeat: no-repeat;
+    animation-name: dsh-firefox-shimmer-sweep;
+  }
+
+  [data-shimmer="true"] > span[aria-hidden="true"][inert] > span > span {
+    transform: none;
+    animation-name: none;
+  }
+}
+
+@keyframes dsh-firefox-shimmer-sweep {
+  0% { mask-position: -100cqw 0; }
+  66.6667%, 100% { mask-position: 100cqw 0; }
+}

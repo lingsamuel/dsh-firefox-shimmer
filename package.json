@@ -1,0 +1,38 @@
+{
+  "name": "dsh-firefox-shimmer",
+  "version": "0.1.0",
+  "description": "修复 DeepSeek Harness Web 在 Firefox 中的文字扫光重影",
+  "type": "module",
+  "engines": {
+    "node": ">=24.9.0"
+  },
+  "exports": {
+    ".": "./src/host.js",
+    "./client": "./dist/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src/host.js",
+    "dist/client.js",
+    "cordis.patch.yml",
+    "manual/"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepack": "npm run build",
+    "package:plugin": "npm run build && node scripts/package.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}
